@@ -3,14 +3,14 @@ def agta_three():
     player_one = ['h']
     player_two = ['h']
 
-    p1h = 1 # times player 1 played h
-    p1t = 0 # times player 1 played t
+    p1h = 1 if player_one[0] == 'h' else 0 # times player 1 played h
+    p1t = 1 if player_one[0] == 't' else 0 # times player 1 played t
 
-    p2h = 1 # times player 2 played h
-    p2t = 0 # times player 2 played t
+    p2h = 1 if player_two[0] == 'h' else 0 # times player 2 played h
+    p2t = 1 if player_two[0] == 't' else 0 # times player 2 played t
 
     i = 1
-    while i <= 100:
+    while i <= 40:
         pr1h = p1h / i # probability of player 1 playing h
         pr1t = p1t / i # probability of player 1 playing t
 
@@ -36,7 +36,7 @@ def agta_three():
         elif pr1h > pr1t:
             m = 't'
         else:
-            m = 't' if(player_one[-1] == 'h') else 'h'
+            m = 't' if(player_one[-2] == 'h') else 'h'
 
         if m == 'h':
             p2h += 1
@@ -46,9 +46,7 @@ def agta_three():
         player_two.append(m)
         i += 1
 
-        print(pr1h*pr2h, p2h/p1t)
-
-    print(player_one)
+    print(list(zip(player_one, player_two)))
 
 
 def main():
